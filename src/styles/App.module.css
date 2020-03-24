@@ -3,8 +3,19 @@
 }
 
 .main {
-  background: #f4f4f4;
   color: #282828;
   padding: 16px;
-  height: 75%;
+  overflow-y: scroll;
+}
+
+.stateList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stateLink {
+  cursor: pointer;
+  margin: 0.3em 0.6em;
+  text-decoration: underline;
+  font-size: 1.3em;
 }

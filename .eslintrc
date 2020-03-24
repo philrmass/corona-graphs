@@ -7,7 +7,8 @@
   "parser": "babel-eslint",
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:json/recommended"
   ],
   settings: {
     "react": {
@@ -28,7 +29,7 @@
     "dot-notation": "error",
     "eqeqeq": [ "error", "smart" ],
     "func-call-spacing": "warn",
-    "indent": [ "error", 2 ],
+    "indent": [ "warn", 2, { "SwitchCase": 1 } ],
     "jsx-quotes": [ "warn", "prefer-single" ],
     "key-spacing": "warn",
     "keyword-spacing": "warn",
@@ -36,6 +37,7 @@
     "max-len": [ "warn", { "code": 120 } ],
     "multiline-ternary": [ "warn", "never" ],
     "no-console": "warn",
+    "no-case-declarations": "warn",
     "no-else-return": "warn",
     "no-eval": "error",
     "no-extra-bind": "warn",
@@ -50,12 +52,12 @@
     "no-trailing-spaces": "warn",
     "no-unexpected-multiline": "warn",
     "no-useless-return": "warn",
+    "no-unused-vars": [ "warn", { "vars": "all", "args": "all"}],
     "one-var-declaration-per-line": "warn",
     "one-var": [ "error", "never" ],
     "operator-linebreak": "warn",
     "quote-props": [ "warn", "as-needed" ],
     "quotes": [ "error", "single", { "avoidEscape": true } ],
-    "radix": "error",
     "react/jsx-indent": [ "error", 2 ],
     "react/jsx-key": "error",
     "react/jsx-no-target-blank": "error",

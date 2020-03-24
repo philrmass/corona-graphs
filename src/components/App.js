@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
-import Footer from './Footer';
+import Graph from './Graph';
+import { getSortedStates, getLastChecked } from '../utilities/data';
+import countsData from '../data/counts.json';
 import styles from '../styles/App.module.css';
-import data from '../data/cases.json';
 
 function App() {
+  const [states] = useState(getSortedStates(countsData));
+  const [lastChecked] = useState(getLastChecked(countsData));
+  const [graphState, setGraphState] = useState(null);
+
+  function buildState(state) {
+    return (
+      <li
+        key={state.state}
+        className={styles.stateLink}
+        onClick={() => setGraphState(state)}
+      >
+        {state.stateName}
+      </li>
+    );
+  }
+
   return (
     <div className={styles.page}>
-      <Header/>
+      <Header
+        lastChecked={lastChecked}
+      />
       <div className={styles.main}>
-        {`${JSON.stringify(data)}`}
+        <ul className={styles.stateList}>
+          {states.map((state) => buildState(state))}
+        </ul>
       </div>
-      <Footer/>
+      <Graph
+        state={graphState}
+        close={() => setGraphState(null)}
+      />
     </div>
   );
 }
