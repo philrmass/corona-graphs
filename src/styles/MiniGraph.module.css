@@ -1,0 +1,31 @@
+.main {
+  position: relative;
+  background: #f7f7f7;
+  width: 120px;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 18px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.graph {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.caseBar {
+  width: 4px;
+  margin: 0 1px;
+  background: #228;
+}

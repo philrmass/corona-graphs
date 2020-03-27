@@ -7,4 +7,4 @@
 - add mini graphs to state index
 - get last data date
 - add update bottom to resave data if > day old
-- Add name link and data source link at bottom
+- Add name link and data source link at bottom of title

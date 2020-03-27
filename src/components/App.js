@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Graph from './Graph';
+import MiniGraph from './MiniGraph';
 import { getSortedStates, getLastChecked } from '../utilities/data';
 import countsData from '../data/counts.json';
 import styles from '../styles/App.module.css';
@@ -17,7 +18,7 @@ function App() {
         className={styles.stateLink}
         onClick={() => setGraphState(state)}
       >
-        {state.stateName}
+        <MiniGraph state={state} />
       </li>
     );
   }
