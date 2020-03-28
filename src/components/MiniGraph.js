@@ -4,6 +4,7 @@ import styles from '../styles/MiniGraph.module.css';
 
 function MiniGraph({ state }) {
   const max = getMax(state.days, 'positive');
+  const curve = calculateCurve(state.days, 'positive');
 
   if (!state) {
     return null;
@@ -14,6 +15,16 @@ function MiniGraph({ state }) {
       const value = parseInt(day[key]);
       return value > max ? value : max;
     }, 1);
+  }
+
+  function calculateCurve(days, key) {
+    const values = days.map((day) => day[key]);
+    //??? remove debugging
+    const test = 'OR';
+    if (state.state === test) {
+      console.log(test, values); //eslint-disable-line no-console
+    }
+    return 0;
   }
 
   function buildMiniGraph(days) {
@@ -47,10 +58,10 @@ function MiniGraph({ state }) {
           {state.stateName}
         </div>
         <div className={styles.cases}>
-          {'XX cases'}
+          {`${max} cases`}
         </div>
         <div className={styles.curve}>
-          {'YO'}
+          {curve}
         </div>
       </div>
       {buildMiniGraph(state.days)}
