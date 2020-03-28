@@ -6,7 +6,7 @@ function Header({ lastChecked, update }) {
   function buildDate() {
     const now = Date.now();
     const hour = 1000 * 60 * 60;
-    const margin = 12 * hour;
+    const margin = 24 * hour;
     const lastDate = new Date(lastChecked);
     const nextUpdate = lastDate.getTime() + margin;
     const canUpdate = now > nextUpdate;
