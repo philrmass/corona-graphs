@@ -56,11 +56,10 @@ export function combineStates(states0, states1) {
   });
 }
 
-export function getLastCheckedOLD(counts) {
-  return counts.reduce((last, count) => {
-    return (count.dateChecked > last) ? count.dateChecked : last;
-  }, '');
-}
-
 export function getLastChecked(states) {
+  return states.reduce((last, state) => {
+    return state.days.reduce((dayLast, day) => {
+      return (day.dateChecked > dayLast) ? day.dateChecked : dayLast;
+    }, last);
+  }, '');
 }
