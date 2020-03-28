@@ -1,4 +1,9 @@
 :root {
+  --bg-white: #ffffff;
+  --bg-light-gray: #f7f7f7;
+  --border: #ececec;
+  --blue: #222482;
+  --red: #ff3411;
 }
 
 * {

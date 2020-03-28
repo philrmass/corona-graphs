@@ -1,6 +1,23 @@
 .main {
-  display: flex;
   padding: 16px;
-  border-bottom: 1px solid #c8c8c8;
+  border-bottom: 1px solid var(--border);
   font-size: 1.6em;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  margin: 0 1em 0 .5em;
+  font-size: 0.9em;
+  color: var(--blue);
+  text-decoration: underline;
 }

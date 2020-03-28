@@ -1,21 +1,36 @@
 .main {
   position: relative;
-  background: #f7f7f7;
-  width: 120px;
-  height: 100px;
+  background: white;
+  width: 140px;
+  height: 116px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   overflow: hidden;
 }
 
-.title {
+.titleBox {
   position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 18px;
+  top: 8px;
+  left: 8px;
+}
+
+.title {
   line-height: 20px;
-  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.cases {
+  color: red;
+  font-size: 12px;
+}
+
+.curve {
+  color: red;
+  font-size: 12px;
 }
 
 .graph {
@@ -27,5 +42,5 @@
 .caseBar {
   width: 4px;
   margin: 0 1px;
-  background: #228;
+  background: var(--blue);
 }

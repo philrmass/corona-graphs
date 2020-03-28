@@ -11,6 +11,15 @@ function App() {
   const [lastChecked] = useState(getLastChecked(countsData));
   const [graphState, setGraphState] = useState(null);
 
+  function update() {
+    console.log('UPDATE'); // eslint-disable-line no-console
+    /*
+    const request = await fetch('https://covidtracking.com/api/states/daily');
+    const data = await request.json();
+    console.log('DATA', data);
+    */
+  }
+
   function buildState(state) {
     return (
       <li
@@ -27,6 +36,7 @@ function App() {
     <div className={styles.page}>
       <Header
         lastChecked={lastChecked}
+        update={update}
       />
       <div className={styles.main}>
         <ul className={styles.stateList}>

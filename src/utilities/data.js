@@ -19,15 +19,17 @@ export function getSortedStates(counts) {
   }, {});
 
   const states = Object.values(statesObj);
+  const filtered = states.filter((state) => state.stateName);
+
   const byStateName = (a, b) => a.stateName.localeCompare(b.stateName);
-  states.sort(byStateName);
+  filtered.sort(byStateName);
 
   const byDate = (a, b) => a.date - b.date;
-  for (const state of states) {
+  for (const state of filtered) {
     state.days.sort(byDate);
   }
 
-  return states;
+  return filtered;
 }
 
 export function getLastChecked(counts) {

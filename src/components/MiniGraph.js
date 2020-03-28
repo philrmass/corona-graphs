@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from '../styles/MiniGraph.module.css';
 
 function MiniGraph({ state }) {
+  const max = getMax(state.days, 'positive');
+
   if (!state) {
     return null;
   }
@@ -15,7 +17,6 @@ function MiniGraph({ state }) {
   }
 
   function buildMiniGraph(days) {
-    console.log('DAYS', days);
     const key = 'positive';
     const max = getMax(days, key);
     return (
@@ -41,7 +42,17 @@ function MiniGraph({ state }) {
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>{state.stateName}</div>
+      <div className={styles.titleBox}>
+        <div className={styles.title}>
+          {state.stateName}
+        </div>
+        <div className={styles.cases}>
+          {'XX cases'}
+        </div>
+        <div className={styles.curve}>
+          {'YO'}
+        </div>
+      </div>
       {buildMiniGraph(state.days)}
     </div>
   );
