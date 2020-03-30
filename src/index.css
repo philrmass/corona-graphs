@@ -2,7 +2,7 @@
   --bg-white: #ffffff;
   --bg-light-gray: #f7f7f7;
   --border: #ececec;
-  --blue: #222482;
+  --blue: #2240a4;
   --red: #ff3411;
 }
 
@@ -15,4 +15,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica", sans-serif;
+}
+
+.positive {
+  background: var(--blue);
+}
+
+.positiveText {
+  color: var(--blue);
+}
+
+.death {
+  background: var(--red);
+}
+
+.deathText {
+  color: var(--red);
 }

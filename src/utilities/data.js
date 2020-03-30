@@ -63,3 +63,52 @@ export function getLastChecked(states) {
     }, last);
   }, '');
 }
+
+export function calculateMetadata(states) {
+  return states.map((state) => {
+    const positiveMax = getMax(state.days, 'positive');
+    const positiveNew = getNew(state.days, 'positive');
+    const deathMax = getMax(state.days, 'death');
+    const deathNew = getNew(state.days, 'death');
+
+    return {
+      ...state,
+      positiveMax,
+      positiveNew,
+      deathMax,
+      deathNew,
+    };
+  });
+}
+
+function getMax(days, key) {
+  return days.reduce((max, day) => {
+    const value = parseInt(day[key]);
+    return value > max ? value : max;
+  }, 0);
+}
+
+function getNew(days, key) {
+  const last = days[days.length - 1];
+  const second = days[days.length - 2];
+  const lastValue = last && last[key];
+  const secondValue = second && second[key];
+
+  if (lastValue && secondValue) {
+    return lastValue - secondValue;
+  }
+  return 0;
+}
+
+export function subtractArrays(as, bs) {
+  if (!bs) {
+    return as;
+  }
+  return as.map((a, index) => {
+    const b = bs[index];
+    if (a && b) {
+      return a - b;
+    }
+    return 0;
+  });
+}

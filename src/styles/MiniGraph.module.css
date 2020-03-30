@@ -1,8 +1,8 @@
 .main {
   position: relative;
   background: white;
-  width: 140px;
-  height: 126px;
+  width: 150px;
+  height: 130px;
   padding: 8px;
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -23,13 +23,7 @@
   font-size: 18px;
 }
 
-.cases {
-  color: var(--blue);
-  font-size: 12px;
-}
-
-.curve {
-  color: var(--blue);
+.subtitle {
   font-size: 12px;
 }
 
@@ -39,8 +33,11 @@
   align-items: flex-end;
 }
 
-.caseBar {
+.bar {
   width: 4px;
+  height: 100%;
   margin: 0 1px;
-  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

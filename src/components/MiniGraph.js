@@ -1,52 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/MiniGraph.module.css';
+import { subtractArrays } from '../utilities/data';
 
-function MiniGraph({ state }) {
-  const max = getMax(state.days, 'positive');
-  const curve = calculateCurve(state.days, 'positive');
-
+function MiniGraph({
+  state,
+  keys,
+  type,
+}) {
   if (!state) {
     return null;
   }
 
-  function getMax(days, key) {
-    return days.reduce((max, day) => {
-      const value = parseInt(day[key]);
-      return value > max ? value : max;
-    }, 1);
-  }
-
-  function calculateCurve(days, key) {
-    const values = days.map((day) => day[key]);
-    //??? remove debugging
-    const test = 'OR';
-    if (state.state === test) {
-      console.log(test, values); //eslint-disable-line no-console
+  function buildMiniGraph() {
+    let values = state.days.map((day) => {
+      return keys.map((key) => day[key]);
+    });
+    if (type === 'new') {
+      values = values.map((value, index, all) => {
+        const last = all[index - 1];
+        return subtractArrays(value, last);
+      });
     }
-    return 0;
-  }
 
-  function buildMiniGraph(days) {
-    const key = 'positive';
-    const max = getMax(days, key);
+    const max = values.reduce((max, value) => {
+      return Math.max(...value, max);
+    }, 0);
+
     return (
       <ul className={styles.graph}>
-        {days.map((day) => buildBar(day, key, max))}
+        {values.map((value, index) => buildBar(index, value, keys, max))}
       </ul>
     );
   }
 
-  function buildBar(day, key, max) {
-    const value = parseInt(day[key]);
-    const percent = (100 * value / max).toFixed(2);
-    const barStyle = { height: `${percent}%` };
+  function buildBar(index, values, keys, max) {
+    const percents = values.map((value) => 100 * value / max);
+
     return (
       <li
-        key={day.date}
-        className={styles.caseBar}
-        style={barStyle}
+        key={index}
+        className={styles.bar}
       >
+        {percents.map((percent, index, all) => {
+          const next = all[index + 1] || 0;
+          const height = (percent - next).toFixed(2);
+          const barStyle = { height: `${height}%` };
+          const keyClass = keys[index] || '';
+          return (
+            <div
+              key={keyClass}
+              style={barStyle}
+              className={keyClass}
+            >
+            </div>
+          );
+        })}
       </li>
     );
   }
@@ -57,20 +66,24 @@ function MiniGraph({ state }) {
         <div className={styles.title}>
           {state.stateName}
         </div>
-        <div className={styles.cases}>
-          {`${max} cases`}
-        </div>
-        <div className={styles.curve}>
-          {curve}
+        <div className={styles.subtitle}>
+          <div className={'positiveText'}>
+            {`${state.positiveMax} (${state.positiveNew})`}
+          </div>
+          <div className={'deathText'}>
+            {`${state.deathMax} (${state.deathNew})`}
+          </div>
         </div>
       </div>
-      {buildMiniGraph(state.days)}
+      {buildMiniGraph()}
     </div>
   );
 }
 
 MiniGraph.propTypes = {
   state: PropTypes.object,
+  keys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default MiniGraph;

@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Graph from './Graph';
 import MiniGraph from './MiniGraph';
-import { getSortedStates, combineStates, getLastChecked } from '../utilities/data';
+import { getSortedStates, combineStates, getLastChecked, calculateMetadata } from '../utilities/data';
 import { saveData } from '../utilities/file';
 import statesData from '../data/states.json';
 import styles from '../styles/App.module.css';
 
 function App() {
-  const [states, setStates] = useState(statesData);
+  const [states, setStates] = useState(calculateMetadata(statesData));
   const [lastChecked] = useState(getLastChecked(statesData));
   const [graphState, setGraphState] = useState(null);
+  const [graphKeys, setGraphKeys] = useState(['positive', 'death']);
+  const [graphType, setGraphType] = useState('max');
 
   async function update() {
     const url = 'https://covidtracking.com/api/states/daily';
@@ -30,9 +32,12 @@ function App() {
       <li
         key={state.state}
         className={styles.stateLink}
-        onClick={() => setGraphState(state)}
       >
-        <MiniGraph state={state} />
+        <MiniGraph
+          state={state}
+          keys={graphKeys}
+          type={graphType}
+        />
       </li>
     );
   }
