@@ -50,6 +50,7 @@ body {
 
 .positiveText {
   color: var(--blue);
+  white-space: pre;
 }
 
 .death {
@@ -58,4 +59,5 @@ body {
 
 .deathText {
   color: var(--red);
+  white-space: pre;
 }

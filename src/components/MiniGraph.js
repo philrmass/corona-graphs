@@ -68,10 +68,10 @@ function MiniGraph({
         </div>
         <div className={styles.subtitle}>
           <div className={'positiveText'}>
-            {`${state.positiveMax} (${state.positiveNew})`}
+            {`${state.positiveMax}  (+${state.positiveNew})`}
           </div>
           <div className={'deathText'}>
-            {`${state.deathMax} (${state.deathNew})`}
+            {`${state.deathMax}  (+${state.deathNew})`}
           </div>
         </div>
       </div>
