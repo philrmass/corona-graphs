@@ -1,30 +1,29 @@
 .main {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100vh;
   width: 100%;
-  padding: 16px;
-  background: white;
-  color: #202020;
+  padding: var(--padding);
+}
+
+.box {
+  display: inline-block;
+  padding: var(--padding) var(--padding-dbl) var(--padding-dbl);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-white);
 }
 
 .title {
-  font-size: 2em;
-  margin-bottom: 16px;
-}
-
-.graphWrap {
+  font-size: var(--size-graph-title);
 }
 
 .graph {
-  height: 300px;
+  height: var(--graph-height);
   display: flex;
   align-items: flex-end;
 }
 
-.caseBar {
-  width: 8px;
-  margin: 0 2px;
-  background: #228;
+.bar {
+  width: var(--graph-bar);
+  margin: 0 var(--graph-margin);
+  background: var(--blue);
 }

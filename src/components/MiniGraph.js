@@ -63,7 +63,7 @@ function MiniGraph({
   return (
     <div className={styles.main}>
       <div className={styles.titleBox}>
-        <div className={styles.title}>
+        <div className={`title ${styles.title}`}>
           {state.stateName}
         </div>
         <div className={styles.subtitle}>

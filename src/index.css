@@ -1,9 +1,29 @@
 :root {
   --bg-white: #ffffff;
-  --bg-light-gray: #f7f7f7;
-  --border: #ececec;
-  --blue: #2240a4;
+  --bg-gray: #f7f7f7;
+  --blue: #22389c;
   --red: #ff3411;
+  --text: #282828;
+  --border: 1px solid #c8c8c8;
+  --size-normal: 14px;
+  --size-link: 13px;
+  --size-title: 32px;
+  --size-graph-title: 28px;
+  --size-state: 18px;
+  --size-state-sub: 12px;
+  --padding-dbl: 32px;
+  --padding: 16px;
+  --padding-half: 8px;
+  --padding-qtr: 4px;
+  --radius: 4px;
+  --mini-width: 150px;
+  --mini-height: 130px;
+  --mini-graph: 80px;
+  --mini-bar: 4px;
+  --mini-margin: 1px;
+  --graph-height: 300px;
+  --graph-bar: 12px;
+  --graph-margin: 2px;
 }
 
 * {
@@ -12,9 +32,16 @@
 
 body {
   height: 100%;
-  margin: 0;
   padding: 0;
-  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  background: var(--bg-gray);
+  color: var(--text);
+  font-family: "Open Sans", "Helvetica", sans-serif;
+  font-size: var(--size-normal);
+}
+
+.title {
+  font-family: "Raleway", "Helvetica", sans-serif;
 }
 
 .positive {

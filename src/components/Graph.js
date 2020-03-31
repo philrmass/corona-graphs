@@ -6,10 +6,6 @@ function Graph({
   state,
   close,
 }) {
-  if (!state) {
-    return null;
-  }
-
   function getMax(days, key) {
     return days.reduce((max, day) => {
       const value = parseInt(day[key]);
@@ -34,7 +30,7 @@ function Graph({
     return (
       <li
         key={day.date}
-        className={styles.caseBar}
+        className={styles.bar}
         style={barStyle}
       >
       </li>
@@ -46,8 +42,8 @@ function Graph({
       className={styles.main}
       onClick={close}
     >
-      <div className={styles.title}>{state.stateName}</div>
-      <div className={styles.graphWrap}>
+      <div className={styles.box}>
+        <div className={styles.title}>{state.stateName}</div>
         {buildGraph(state.days)}
       </div>
     </div>

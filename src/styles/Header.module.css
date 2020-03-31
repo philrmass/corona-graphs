@@ -1,23 +1,47 @@
 .main {
-  padding: 16px;
-  border-bottom: 1px solid var(--border);
-  font-size: 1.6em;
+  padding: var(--padding);
+  background: var(--bg-white);
 }
 
 .title {
-  font-size: 28px;
+  font-size: var(--size-title);
 }
 
 .subtitle {
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: var(--padding-half);
   display: flex;
   justify-content: space-between;
 }
 
 .link {
   margin: 0 1em 0 .5em;
-  font-size: 0.9em;
+  font-size: var(--size-link);
   color: var(--blue);
   text-decoration: underline;
+}
+
+.tabs {
+  padding: 0 var(--padding);
+  border-bottom: var(--border);
+  background: var(--bg-white);
+  display: flex;
+  align-items: flex-end;
+}
+
+.tab {
+  margin-right: var(--padding-half);
+  padding: var(--padding-qtr) var(--padding-half) var(--padding-qtr);
+  border-top: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-size: 14px;
+}
+
+.selected {
+  position: relative;
+  bottom: -1px;
+  padding-bottom: calc(1px + var(--padding-qtr));
+  background: var(--bg-gray);
+  font-weight: bold;
 }

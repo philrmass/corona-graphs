@@ -1,11 +1,11 @@
 .main {
   position: relative;
-  background: white;
-  width: 150px;
-  height: 130px;
-  padding: 8px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  width: var(--mini-width);
+  height: var(--mini-height);
+  padding: var(--padding-half);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-white);
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -14,29 +14,28 @@
 
 .titleBox {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: var(--padding-half);
+  left: var(--padding-half);
 }
 
 .title {
-  line-height: 20px;
-  font-size: 18px;
+  font-size: var(--size-state);
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: var(--size-state-sub);
 }
 
 .graph {
-  height: 80px;
+  height: var(--mini-graph);
   display: flex;
   align-items: flex-end;
 }
 
 .bar {
-  width: 4px;
+  width: var(--mini-bar);
   height: 100%;
-  margin: 0 1px;
+  margin: 0 var(--mini-margin);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
