@@ -9,6 +9,7 @@
 }
 
 .stateList {
+  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
 }

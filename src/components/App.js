@@ -22,6 +22,7 @@ function App() {
   const [graphKeys, setGraphKeys] = useState(['positive', 'death']);
   const [graphType, setGraphType] = useState('max');
   const [sortType, setSortType] = useState(sortTypes[0]);
+  const isLocalhost = location.hostname === 'localhost';
 
   function setSort(type) {
     setSortType(type);
@@ -76,7 +77,7 @@ function App() {
     setSortType(sortTypes[0]);
     setSortedStates(updatedStates);
 
-    if (location.hostname === 'localhost') {
+    if (isLocalhost) {
       saveData('states.json', updatedData);
     }
   }
@@ -86,6 +87,7 @@ function App() {
       <li
         key={state.state}
         className={styles.state}
+        onClick={() => setGraphState(state)}
       >
         <MiniGraph
           state={state}
@@ -117,6 +119,8 @@ function App() {
         {showGraph &&
           <Graph
             state={graphState}
+            graphKey={graphKeys[0]}
+            graphType={graphType}
             close={() => setGraphState(null)}
           />
         }

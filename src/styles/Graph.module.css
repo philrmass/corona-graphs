@@ -2,10 +2,13 @@
   height: 100vh;
   width: 100%;
   padding: var(--padding);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .box {
-  display: inline-block;
   padding: var(--padding) var(--padding-dbl) var(--padding-dbl);
   border: var(--border);
   border-radius: var(--radius);
@@ -23,7 +26,35 @@
 }
 
 .bar {
+  position: relative;
   width: var(--graph-bar);
   margin: 0 var(--graph-margin);
-  background: var(--blue);
+}
+
+.bar .tooltip {
+  position: absolute;
+  top: -32px;
+  visibility: hidden;
+  background: var(--bg-white);
+  padding: 2px 4px;
+  border: var(--border);
+  border-radius: var(--radius);
+  white-space: nowrap;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.bar:hover .tooltip {
+  visibility: visible;
+}
+
+.tooltipDate {
+  color: var(--text-gray);
+  font-size: 0.8em;
+}
+
+.tooltipValue {
+  margin-left: 4px;
+  color: black;
 }
