@@ -1,5 +1,5 @@
 .main {
-  padding: var(--padding);
+  padding: var(--padding) var(--padding) var(--padding-half);
   background: var(--bg-white);
 }
 
@@ -25,10 +25,12 @@
   border-bottom: var(--border);
   background: var(--bg-white);
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
 }
 
 .tab {
+  margin-top: var(--padding-half);
   margin-right: var(--padding-half);
   padding: var(--padding-qtr) var(--padding-half) var(--padding-qtr);
   border-top: var(--border);

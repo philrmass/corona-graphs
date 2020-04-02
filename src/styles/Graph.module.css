@@ -1,5 +1,4 @@
 .main {
-  height: 100vh;
   width: 100%;
   padding: var(--padding);
   cursor: pointer;
@@ -9,6 +8,7 @@
 }
 
 .box {
+  max-width: 90vw;
   padding: var(--padding) var(--padding-dbl) var(--padding-dbl);
   border: var(--border);
   border-radius: var(--radius);
