@@ -17,7 +17,7 @@ function App() {
   };
   const [states, setStates] = useState(calculateMetadata(statesData));
   const [sortedStates, setSortedStates] = useState(states);
-  const [lastChecked] = useState(getLastChecked(statesData));
+  const [lastChecked, setLastChecked] = useState(getLastChecked(statesData));
   const [graphState, setGraphState] = useState(null);
   const [graphKeys, setGraphKeys] = useState(['positive', 'death']);
   const [graphType, setGraphType] = useState('max');
@@ -66,11 +66,18 @@ function App() {
     const response = await fetch(url);
     const data = await response.json();
     const receivedData = getSortedStates(data);
-    const updatedStates = combineStates(statesData, receivedData);
+    const updatedData = combineStates(statesData, receivedData);
+    const updatedStates = calculateMetadata(updatedData);
     setStates(updatedStates);
+    setLastChecked(getLastChecked(updatedData));
+
+    setGraphKeys(['positive', 'death']);
+    setGraphType('max');
+    setSortType(sortTypes[0]);
+    setSortedStates(updatedStates);
 
     if (location.hostname === 'localhost') {
-      saveData('states.json', updatedStates);
+      saveData('states.json', updatedData);
     }
   }
 
