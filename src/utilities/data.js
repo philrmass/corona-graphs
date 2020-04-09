@@ -34,6 +34,8 @@ export function getSortedStates(counts) {
 }
 
 export function combineStates(states0, states1) {
+  const byDate = (a, b) => a.date - b.date;
+
   return states0.map((state, index) => {
     const state0 = { ...state };
     const state1 = states1[index];
@@ -52,6 +54,7 @@ export function combineStates(states0, states1) {
       }
     });
 
+    state0.days.sort(byDate);
     return state0;
   });
 }
