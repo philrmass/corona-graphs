@@ -102,16 +102,3 @@ function getNew(days, key) {
   }
   return 0;
 }
-
-export function subtractArrays(as, bs) {
-  if (!bs) {
-    return as;
-  }
-  return as.map((a, index) => {
-    const b = bs[index];
-    if (a && b) {
-      return a - b;
-    }
-    return 0;
-  });
-}

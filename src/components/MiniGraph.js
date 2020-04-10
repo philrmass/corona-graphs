@@ -1,61 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/MiniGraph.module.css';
-import { subtractArrays } from '../utilities/data';
+import { getDalies, getMax } from '../utilities/graph';
 
 function MiniGraph({
   state,
-  keys,
-  type,
+  graphKey,
+  graphType,
 }) {
   if (!state) {
     return null;
   }
 
-  function buildMiniGraph() {
-    let values = state.days.map((day) => {
-      return keys.map((key) => day[key]);
-    });
-    if (type === 'new') {
-      values = values.map((value, index, all) => {
-        const last = all[index - 1];
-        return subtractArrays(value, last);
-      });
-    }
-
-    const max = values.reduce((max, value) => {
-      return Math.max(...value, max);
-    }, 0);
+  function buildMiniGraph(days, key, type, max) {
+    const dailies = getDalies(days, key, type === 'new');
+    const graphMax = max || getMax(dailies);
 
     return (
       <ul className={styles.graph}>
-        {values.map((value, index) => buildBar(index, value, keys, max))}
+        {dailies.map((daily) => buildBar(daily, graphMax, key))}
       </ul>
     );
   }
 
-  function buildBar(index, values, keys, max) {
-    const percents = values.map((value) => 100 * value / max);
+  function buildBar(daily, max, key) {
+    const divisor = max > 0 ? max : 1;
+    const percent = (100 * daily.value / divisor).toFixed(2);
+    const barStyle = { height: `${percent}%` };
 
     return (
       <li
-        key={index}
-        className={styles.bar}
+        key={daily.date}
+        className={`${styles.bar} ${key}`}
+        style={barStyle}
       >
-        {percents.map((percent, index, all) => {
-          const next = all[index + 1] || 0;
-          const height = (percent - next).toFixed(2);
-          const barStyle = { height: `${height}%` };
-          const keyClass = keys[index] || '';
-          return (
-            <div
-              key={keyClass}
-              style={barStyle}
-              className={keyClass}
-            >
-            </div>
-          );
-        })}
       </li>
     );
   }
@@ -75,15 +53,15 @@ function MiniGraph({
           </div>
         </div>
       </div>
-      {buildMiniGraph()}
+      {buildMiniGraph(state.days, graphKey, graphType)}
     </div>
   );
 }
 
 MiniGraph.propTypes = {
   state: PropTypes.object,
-  keys: PropTypes.arrayOf(PropTypes.string).isRequired,
-  type: PropTypes.string.isRequired,
+  graphKey: PropTypes.string,
+  graphType: PropTypes.string,
 };
 
 export default MiniGraph;

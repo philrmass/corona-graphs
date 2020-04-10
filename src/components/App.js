@@ -19,7 +19,7 @@ function App() {
   const [sortedStates, setSortedStates] = useState(states);
   const [lastChecked, setLastChecked] = useState(getLastChecked(statesData));
   const [graphState, setGraphState] = useState(null);
-  const [graphKeys, setGraphKeys] = useState(['positive', 'death']);
+  const [graphKey, setGraphKey] = useState('positive');
   const [graphType, setGraphType] = useState('max');
   const [sortType, setSortType] = useState(sortTypes[0]);
   const isLocalhost = location.hostname === 'localhost';
@@ -30,27 +30,27 @@ function App() {
     let sortKey = '';
     switch (type) {
       case 'Cases':
-        setGraphKeys(['positive']);
+        setGraphKey('positive');
         setGraphType('max');
         sortKey = 'positiveMax';
         break;
       case 'New Cases':
-        setGraphKeys(['positive']);
+        setGraphKey('positive');
         setGraphType('new');
         sortKey = 'positiveNew';
         break;
       case 'Deaths':
-        setGraphKeys(['death']);
+        setGraphKey('death');
         setGraphType('max');
         sortKey = 'deathMax';
         break;
       case 'New Deaths':
-        setGraphKeys(['death']);
+        setGraphKey('death');
         setGraphType('new');
         sortKey = 'deathNew';
         break;
       default:
-        setGraphKeys(['positive', 'death']);
+        setGraphKey('positive');
         setGraphType('max');
     }
 
@@ -72,7 +72,7 @@ function App() {
     setStates(updatedStates);
     setLastChecked(getLastChecked(updatedData));
 
-    setGraphKeys(['positive', 'death']);
+    setGraphKey('positive');
     setGraphType('max');
     setSortType(sortTypes[0]);
     setSortedStates(updatedStates);
@@ -91,8 +91,8 @@ function App() {
       >
         <MiniGraph
           state={state}
-          keys={graphKeys}
-          type={graphType}
+          graphKey={graphKey}
+          graphType={graphType}
         />
       </li>
     );
@@ -119,7 +119,7 @@ function App() {
         {showGraph &&
           <Graph
             state={graphState}
-            graphKey={graphKeys[0]}
+            graphKey={graphKey}
             graphType={graphType}
             close={() => setGraphState(null)}
           />
