@@ -6,6 +6,11 @@
   background: var(--bg-white);
 }
 
+.mainSelected {
+  border-color: var(--border-dark);
+  box-shadow: 1px 1px 8px var(--shadow);
+}
+
 .title {
   font-size: var(--size-state);
 }

@@ -36,6 +36,9 @@ function MiniGraph({
     const graphMax = max || dailiesMax;
     if (dailiesMax !== localMax) {
       setLocalMax(dailiesMax);
+      if (state.state === maxState) {
+        setGraphMax(null, dailiesMax);
+      }
     }
 
     return (
@@ -65,8 +68,10 @@ function MiniGraph({
     return null;
   }
 
+  const selected = maxState === state.state ? styles.mainSelected : '';
+
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} ${selected}`}>
       <div className={`title ${styles.title}`}>
         {state.stateName}
       </div>

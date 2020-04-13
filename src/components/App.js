@@ -68,6 +68,8 @@ function App() {
     if (state === maxState) {
       setMaxState(null);
       setGraphMax(null);
+    } else if (state === null) {
+      setGraphMax(max);
     } else {
       setMaxState(state);
       setGraphMax(max);
