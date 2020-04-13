@@ -21,6 +21,8 @@ function App() {
   const [graphState, setGraphState] = useState(null);
   const [graphKey, setGraphKey] = useState('positive');
   const [graphType, setGraphType] = useState('max');
+  const [graphMax, setGraphMax] = useState(null);
+  const [maxState, setMaxState] = useState(null);
   const [sortType, setSortType] = useState(sortTypes[0]);
   const isLocalhost = location.hostname === 'localhost';
 
@@ -62,6 +64,16 @@ function App() {
     }
   }
 
+  function updateGraphMax(state, max) {
+    if (state === maxState) {
+      setMaxState(null);
+      setGraphMax(null);
+    } else {
+      setMaxState(state);
+      setGraphMax(max);
+    }
+  }
+
   async function update() {
     const url = 'https://covidtracking.com/api/states/daily';
     const response = await fetch(url);
@@ -87,12 +99,15 @@ function App() {
       <li
         key={state.state}
         className={styles.state}
-        onClick={() => setGraphState(state)}
+        onDoubleClick={() => setGraphState(state)}
       >
         <MiniGraph
           state={state}
           graphKey={graphKey}
           graphType={graphType}
+          graphMax={graphMax}
+          maxState={maxState}
+          setGraphMax={updateGraphMax}
         />
       </li>
     );

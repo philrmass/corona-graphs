@@ -18,7 +18,7 @@ function Header({
     const last = lastDate.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
 
     return (
-      <div>
+      <div className={styles.date}>
         {`Through ${last}`}
         {canUpdate &&
           <button className={styles.link} onClick={update}>Update</button>

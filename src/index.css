@@ -5,12 +5,13 @@
   --red: #c83008;
   --text: #282828;
   --text-gray: #686868;
+  --text-lt-gray: #989898;
   --border: 1px solid #c8c8c8;
   --size-normal: 14px;
   --size-link: 13px;
   --size-title: 32px;
   --size-graph-title: 28px;
-  --size-state: 18px;
+  --size-state: 16px;
   --size-state-sub: 12px;
   --padding-dbl: 32px;
   --padding: 16px;

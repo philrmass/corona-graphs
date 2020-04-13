@@ -13,6 +13,10 @@
   justify-content: space-between;
 }
 
+.date {
+  margin-right: 1em;
+}
+
 .link {
   margin: 0 1em 0 .5em;
   font-size: var(--size-link);
