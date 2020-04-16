@@ -33,32 +33,6 @@ export function getSortedStates(counts) {
   return filtered;
 }
 
-export function combineStates(states0, states1) {
-  const byDate = (a, b) => a.date - b.date;
-
-  return states0.map((state, index) => {
-    const state0 = { ...state };
-    const state1 = states1[index];
-    const days0 = state0.days;
-    const days1 = state1.days;
-
-    days1.map((day1) => {
-      const found = days0.find((day0) => day0.date === day1.date);
-      if (!found) {
-        days0.push({
-          date: day1.date,
-          dateChecked: day1.dateChecked,
-          positive: day1.positive,
-          death: day1.death,
-        });
-      }
-    });
-
-    state0.days.sort(byDate);
-    return state0;
-  });
-}
-
 export function getLastChecked(states) {
   return states.reduce((last, state) => {
     return state.days.reduce((dayLast, day) => {

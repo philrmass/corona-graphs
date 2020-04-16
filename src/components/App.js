@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Graph from './Graph';
 import MiniGraph from './MiniGraph';
-import { getSortedStates, combineStates, getLastChecked, calculateMetadata } from '../utilities/data';
+import { getSortedStates, getLastChecked, calculateMetadata } from '../utilities/data';
 import { saveData } from '../utilities/file';
 import statesData from '../data/states.json';
 import styles from '../styles/App.module.css';
@@ -80,8 +80,7 @@ function App() {
     const url = 'https://covidtracking.com/api/states/daily';
     const response = await fetch(url);
     const data = await response.json();
-    const receivedData = getSortedStates(data);
-    const updatedData = combineStates(statesData, receivedData);
+    const updatedData = getSortedStates(data);
     const updatedStates = calculateMetadata(updatedData);
     setStates(updatedStates);
     setLastChecked(getLastChecked(updatedData));
