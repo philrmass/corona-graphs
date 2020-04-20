@@ -70,7 +70,7 @@
 .bar {
   width: var(--mini-bar);
   height: 100%;
-  margin: 0 var(--mini-margin);
+  margin-left: var(--mini-margin);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
