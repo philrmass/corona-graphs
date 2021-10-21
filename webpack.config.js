@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -43,7 +44,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -51,10 +52,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    contentBase: './dist',
-    clientLogLevel: 'silent',
-    port: 3000,
-    hot: true,
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+  },
+  infrastructureLogging: {
+    level: 'error',
   },
   devtool: 'source-map',
 };
