@@ -5,7 +5,7 @@
   "description": "corona-graphs-description",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "mocha",
     "lint": "eslint src/** src/**/**",
