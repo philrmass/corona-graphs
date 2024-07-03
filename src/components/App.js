@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'preact/hooks';
 import Header from './Header';
 import Graph from './Graph';
 import MiniGraph from './MiniGraph';

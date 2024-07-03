@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/Graph.module.css';
 import { getDalies, getMax } from '../utilities/graph';

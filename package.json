@@ -4,14 +4,26 @@
   "homepage": "https://philrmass.github.io/corona-graphs",
   "description": "corona-graphs-description",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact build --no-prerender",
+    "dev": "DEV=true cross-env NODE_OPTIONS=--openssl-legacy-provider preact watch --clear=false",
+    "serve": "sirv build --port 8080 --cors --single",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "author": "Phil Mass",
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^7.0.3",
     "gh-pages": "^6.1.1",
     "preact-cli": "^3.0.0",
+    "prop-types": "^15.8.1",
     "sirv-cli": "^1.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jest": "^29.5.0",
+    "preact": "^10.1.0",
+    "preact-render-to-string": "^5.1.2",
+    "utilities": "https://github.com/philrmass/utilities#v0.12.3"
+  }
 }
